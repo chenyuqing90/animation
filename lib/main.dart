@@ -5,7 +5,7 @@ void main() => runApp(const MyApp());
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  static const String _title = 'Flutter Code Sample';
+  static const String _title = 'Example';
 
   @override
   Widget build(BuildContext context) {
@@ -30,11 +30,11 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
   Offset offset = Offset.zero;
 
   void _slideUp() {
-    setState(() => offset -= const Offset(0, 1));
+    setState(() => offset -= const Offset(0, 3));
   }
 
   void _slideDown() {
-    setState(() => offset += const Offset(0, 1));
+    setState(() => offset += const Offset(0, 80));
   }
 
   @override
@@ -42,22 +42,19 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: <Widget>[
-        ElevatedButton(
-          onPressed: _slideUp,
-          child: const Text('Slide up'),
-        ),
-        ElevatedButton(
-          onPressed: _slideDown,
-          child: const Text('Slide down'),
-        ),
+
         Padding(
-          padding: const EdgeInsets.all(50),
+          padding: const EdgeInsets.all(180),
           child: AnimatedSlide(
             offset: offset,
             duration: const Duration(milliseconds: 500),
             curve: Curves.easeInOut,
             child: const FlutterLogo(),
           ),
+        ),
+        ElevatedButton(
+          onPressed: _slideUp,
+          child: const Text('Start'),
         ),
       ],
     );
